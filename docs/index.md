@@ -2,10 +2,7 @@
 title: "El juego del tejo, errores y aciertos"
 author: "Gabriel González Medina"
 date: "24-12-2020"
-output:
-  html_document:
-    df_print: paged
-  pdf_document: default
+output: html_document:
 ---
 
 ## INTRODUCCIÓN
