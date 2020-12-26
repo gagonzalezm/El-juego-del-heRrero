@@ -63,10 +63,10 @@ Le ponemos nombre a las variables, para recordar qué es qué
 colnames(puntos) <- c("intento1", "intento2", "intento3")
 ```
 
-Ahora creo una variable para distinguir a los jugadores
+Ahora creo una variable para distinguir a los jugadores, y cargamos prevaimente el paquete (dplyr) necesario para poder hacer lo siguiente
 
 ```{r message=FALSE}
-library(dplyr) #Cargamos el paquete necesario para poder hacer lo siguiente
+library(dplyr) 
 puntos <- puntos %>% 
   mutate(jugador = rownames(puntos))
 ```
