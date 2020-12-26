@@ -1,7 +1,7 @@
 ---
 title: "Los juegos, errores y aciertos"
 author: "Gabriel González Medina"
-date: '`r Sys.Date()`'
+date: "26 12 2020"
 output: html_document
 ---
 
