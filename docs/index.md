@@ -80,18 +80,24 @@ library(ggplot2) #llamamos el paquete para graficar
 ggplot(puntos, aes(jugador, intento1, color = jugador)) +
   geom_point(size = 8) + #En este parte le doy el tamaño a los tejos
   geom_hline(yintercept =  60, color = "green", linetype = "dotted", 
-             size = 3, alpha = 0.5) + #luego creo la linea con la que se gana
+             size = 3, alpha = 0.5) 
   scale_y_continuous(limits = c(0,120),  breaks = c(0,30,60, 90, 120))+
   theme_classic() +
   theme( axis.text.x = element_blank(),
          axis.title.y = element_blank(),
          axis.text.y = element_blank(),
          axis.title.x = element_blank()
-  ) #y toda esta ultima parte es para limpiar el gráfico y solo queden elementos principales
-         
+  )      
 ```
+ Algunas explicaciones del codigo anterior: 
+ 
+ *geom_hline()* + es para crear  la linea horizontal con la que se gana si el tejo cae justo encima.
+ *scale_y_continuous()* 
+ *theme_classic()*
+ *theme()* son para limpiar el gráfico y solo queden elementos principales y se parezca lo máximo posible a un cajón. 
 
-Tenemos que ajustar la base de datos si queremos poder graficar todos los intentos en un gráfico
+
+Continuo. Tengo que ajustar la base de datos si queremos poder graficar todos los intentos en un gráfico
 
 ```{r message=FALSE}
 library(tidyr)
