@@ -91,7 +91,7 @@ ggplot(puntos, aes(jugador, intento1, color = jugador)) +
 ```
  Algunas explicaciones del codigo anterior: 
  
- *geom_hline()* + es para crear  la linea horizontal con la que se gana si el tejo cae justo encima.
+ *geom_hline()* es para crear  la linea horizontal con la que se gana si el tejo cae justo encima.
  *scale_y_continuous()* 
  *theme_classic()*
  *theme()* son para limpiar el gráfico y solo queden elementos principales y se parezca lo máximo posible a un cajón. 
