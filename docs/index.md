@@ -11,11 +11,11 @@ output: html_document
 
 En este escrito doy una primera aproximación al uso de R y conceptos estadísticos para realizar modelos predictos, a traves del **juego del tejo**
 
-![](Muchachos 01.jpg){width=250px}
+![](Muchachos 01.jpg)
 
 En mi país, Chile, es un juego común (supuestamente) en el ambiente rural, y sobre todo en las fiestas nacionales, los "18 de septiembre". De hecho, tengo el recuerdo que con mi familia cuando niño, en Cabildo, haciendo varios juegos tradicionales, y entre estos tenían que preparar el terreno de juego para el tejo. aunque acá en Chile, tambien le dicen **"La Rayuela"**, pero en otros paises lationaméricanos, le dicen la Rayuela a lo que nosotros le decimos **"El Luche"**. Bueno, todo un enredo, que no vamos a profundizar.
 
-![](Marco 04.jpg){width=250px} 
+![](Marco 04.jpg)
 
 De acuerdo, a lo que encontré en [internet](http://www.revistachilena.com/La_Rayuela.html), el cajon de juego es de 120 cm largo y 120 ancho y la linea donde debe caer el tejo para marcar una "quemada" y obtener 2 puntos está a 60 cm horizontalmente en el cajon, de lado a lado. 
 
@@ -65,21 +65,18 @@ colnames(puntos) <- c("intento1", "intento2", "intento3")
 
 Ahora creo una variable para distinguir a los jugadores, y activo previamente el paquete (dplyr) necesario para que funcione la siguiente linea de código
 
-```{r message=FALSE}
+```{r}
 library(dplyr) 
-
 puntos <- puntos %>% 
   mutate(jugador = rownames(puntos))
-
 print(puntos)
-  
 ```
 
 ### Gráficos
 
 Graficamos los resultados del primer intento
            
-```{r message=FALSE}
+```{r}
 
 library(ggplot2) 
 ggplot(puntos, aes(jugador, intento1, color = jugador)) +
