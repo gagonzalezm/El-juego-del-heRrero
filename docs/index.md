@@ -14,22 +14,31 @@ En este escrito doy una primera aproximación al uso de R y conceptos estadísti
 
 ![](Muchachos 01.jpg){width=250px}
 
-En mi país, Chile, es un juego común en el ambiente rural, y sobre todo en las fiestas nacionales, los 18 de septiembre. De hecho, tengo el recuerdo con mi familia cuando niño, en Cabildo, haciendo varios juegos tradicionales, y entre estos tenían que prepar el terreno de juego para el tejo. aunque acá en Chile, tambien le dicen **"La Rayuela"**, pero en otros paises lationaméricanos, le dicen la Rayuela a lo que nosotros le decimos **"El Luche"**. Bueno, todo un enredo, que no vamos a profundizar.
+En mi país, Chile, es un juego común (supuestamente) en el ambiente rural, y sobre todo en las fiestas nacionales, los "18 de septiembre". De hecho, tengo el recuerdo que con mi familia cuando niño, en Cabildo, haciendo varios juegos tradicionales, y entre estos tenían que preparar el terreno de juego para el tejo. aunque acá en Chile, tambien le dicen **"La Rayuela"**, pero en otros paises lationaméricanos, le dicen la Rayuela a lo que nosotros le decimos **"El Luche"**. Bueno, todo un enredo, que no vamos a profundizar.
 
 ![](Marco 04.jpg){width=250px} 
 
-De acuerdo, a lo que encontré en [internet, "Revista Chilena" ](http://www.revistachilena.com/La_Rayuela.html), el cajon de juego es de 120 cm largo y 120 ancho y la linea donde debe caer el tejo para marcar una "quemada" y obtener 2 puntos está a 60 cm horizontalmente en el cajon, de lado a lado. 
+De acuerdo, a lo que encontré en [internet](http://www.revistachilena.com/La_Rayuela.html), el cajon de juego es de 120 cm largo y 120 ancho y la linea donde debe caer el tejo para marcar una "quemada" y obtener 2 puntos está a 60 cm horizontalmente en el cajon, de lado a lado. 
+
+Basado en los elementos anterior me prepongo en esta ocasión a explicar cómo: 
+
++ Crear una base de datos basados en un situación concreto como los puntos en un juego de reglas sencillas
++ Gráficar los datos y ajustar los parametros visuales
++ Modificar esa base de datos para crear un grafico que permita representar todas las variables.
++ Comparar distintas maneras de resumir los aciertos y errores, de acuerdo a las reglas del juego
 
 
-## Registro de los datos
+## Desarrollo 
+
+### Registro de los datos
 
 
 Vamos a empezar con algo bastante simple, los registros que podríamos haber sido anotados manualmente en una hoja de papel.
 
 En este escenario tenemos dos jugadores que tiraron tres veces cada uno,
-el arbitro luego de cada lanzamiento media con una regla la sitancia en que caí el tejo desde el comienzo del cajon.
+el arbitro luego de cada lanzamiento media con una regla la disitancia en que caía el tejo, contando desde el comienzo del cajon.
 
-Entonces, en su libreta de notas el indico qué:
+Entonces, en su libreta de notas él indicó que:
 
 jugador 1 =  60, 80, 40
 
@@ -42,14 +51,14 @@ j1 <- c(60, 80, 40)
 j2 <- c(70, 65, 55)
 ```
 
-Lo transformó ahora en un **data frame**, para que nos quedé listo para trabajar más adelante. Digamos que en una forma tabulada, como en una planilla excel, o un viejo 
+Lo transformo ahora en un **data frame**, para que nos quedé listo para trabajar más adelante. Digamos que en una forma tabulada, como en una planilla excel, o un viejo 
 cuaderno de matematicas con lineas verticales y horizontales. 
 
 ```{r}
 puntos <- data.frame(rbind(j1,j2))
 ```
 
-Les pondemos nombre a las variables, para recordar qué es qué
+Le ponemos nombre a las variables, para recordar qué es qué
 
 ```{r}
 colnames(puntos) <- c("intento1", "intento2", "intento3")
@@ -63,7 +72,7 @@ puntos <- puntos %>%
   mutate(jugador = rownames(puntos))
 ```
 
-## Gráficos
+### Gráficos
 
 Luego graficamos los resultados del primer intento
            
@@ -108,7 +117,7 @@ ggplot(puntos, aes(jugador, distancia, shape = intento, color = jugador)) +
 ```
 
 
-### Los errores
+### Definiendo los aciertos y errores
 
 Calculamos la **diferencia** entre donde cayó el tejo y la linea objetivo
 
