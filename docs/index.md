@@ -1,9 +1,11 @@
 ---
-title: "El juego del tejo, errores y aciertos"
+title: "Los juegos, errores y aciertos"
 author: "Gabriel González Medina"
-date: "24-12-2020"
-output: html_document:
+date: '`r Sys.Date()`'
+output: html_document
 ---
+
+# El tejo o la Rayuela
 
 ## INTRODUCCIÓN
 
