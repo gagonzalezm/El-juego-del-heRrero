@@ -67,15 +67,20 @@ Ahora creo una variable para distinguir a los jugadores, y activo previamente el
 
 ```{r message=FALSE}
 library(dplyr) 
+
 puntos <- puntos %>% 
   mutate(jugador = rownames(puntos))
+
+print(puntos)
+  
 ```
 
 ### Gráficos
 
-Luego graficamos los resultados del primer intento
+Graficamos los resultados del primer intento
            
 ```{r message=FALSE}
+
 library(ggplot2) 
 ggplot(puntos, aes(jugador, intento1, color = jugador)) +
   geom_point(size = 8) + 
@@ -87,7 +92,8 @@ ggplot(puntos, aes(jugador, intento1, color = jugador)) +
          axis.title.y = element_blank(),
          axis.text.y = element_blank(),
          axis.title.x = element_blank()
-  )      
+  ) 
+  
 ```
  Algunas explicaciones del codigo anterior: 
  
