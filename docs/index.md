@@ -76,11 +76,11 @@ puntos <- puntos %>%
 Luego graficamos los resultados del primer intento
            
 ```{r message=FALSE}
-library(ggplot2) #llamamos el paquete para graficar 
+library(ggplot2) 
 ggplot(puntos, aes(jugador, intento1, color = jugador)) +
-  geom_point(size = 8) + #En este parte le doy el tamaño a los tejos
+  geom_point(size = 8) + 
   geom_hline(yintercept =  60, color = "green", linetype = "dotted", 
-             size = 3, alpha = 0.5) 
+             size = 3, alpha = 0.5) +
   scale_y_continuous(limits = c(0,120),  breaks = c(0,30,60, 90, 120))+
   theme_classic() +
   theme( axis.text.x = element_blank(),
