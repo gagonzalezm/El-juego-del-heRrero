@@ -4,3 +4,5 @@ author: Gabriel González Medina
 navbar-links:
   About Me: "Psicólogo, Magister en Epidemiología. Mail de contacto :  gagonzalez1@uc.cl"
 markdown: kramdown
+# Reading Files
+include: index.Rmd
