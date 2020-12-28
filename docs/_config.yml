@@ -5,7 +5,7 @@ navbar-links:
   About Me: "Psicólogo, Magister en Epidemiología. Mail de contacto :  gagonzalez1@uc.cl"
 markdown: kramdown
 # Reading Files
-include: index.html
+include: _docs
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
