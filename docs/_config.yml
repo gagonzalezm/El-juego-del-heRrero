@@ -6,3 +6,7 @@ navbar-links:
 markdown: kramdown
 # Reading Files
 include: index.Rmd
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
