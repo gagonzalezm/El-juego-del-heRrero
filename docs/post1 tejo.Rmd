@@ -234,6 +234,189 @@ La respuesta para nada sorprendente a todas estas preguntas es **"depende"**
 una palabra muy usada tanto por la estadística como por la psicología, porque básicamente es muy dificil encontrar algo que no se influenciado o causado por otra cosa. El contexto es sumamente importante para poder tomer una decisión. 
 Seguiré con esto en proximo entregas, para que podamos entender cuando es mejor usar cada cosa.
 
+
+
+# Conceptos epidemiológicos
+
+## Morbilidad
+
+### **Tasa de ataque**
+
+Se define como: a/b, donde
+
+-   a es "N° en riesgo en las que se produce X enfermedad"
+
+-   b es "N° total en riesgo
+
+*Ejemplo*:
+
+100 personas enfermaron al comer X alimento 200 personas comieron X alimento.
+
+```{r}
+
+
+a <- 100
+
+b <- 200
+
+#creamos la función de la tasa
+
+tasa_de_ataque <- function(a, b){
+  a/b
+  }
+
+#Aplicamos la función. 
+
+tasa_de_ataque(a, b)
+```
+
+### **Tasa de Incidencia**[^1]
+
+[^1]: **Diferencia entre tasa de ataque y de incidencia:** La tasa de ataque se considera una proporción. En esta no hay expecifiación de **cuándo** sucedio, a diferencia de la incidencia, donde el tiempo es un factor clave.
+
+Es una medida de riesgo porque involucra una transición y tiempo
+
+Se define como a/b, donde
+
+-   "a" es n° de casos *NUEVOS* de X enfermedad en un población y tiempo especifico.
+
+-   "b" es n° de casos en riesgo de X enfermedad en un población y tiempo especifico
+
+Nota: los casos en riesgo son los que efectivamente puedan llegar a tener la enfermedad. Si no se tiene utero no se puede tener cancer uterino.
+
+*Ejemplo*:
+
+5 adultos fueron diagnosticados con esquizofrenia, de 25 que habían sido evaluados en la adolescencia Ocon riesgo a tener ese mismo trastorno.
+
+```{r}
+
+
+a <- 5
+
+b <- 25
+
+#Creamos la función de la tasa (esta se remplazará a la que teníamos hecha anteriromente)
+
+tasa_de_incidencia <- function(a, b){
+  a/b
+  }
+
+tasa_de_incidencia(a, b)
+
+```
+
+### **Prevalencia**
+
+Se define como a / b, donde
+
+-   "a" es N° de personas que presentan X enfermedad en un momento determinado
+
+-   "b" el total de personas en ese mismo momento
+
+Acá no ocupamos la palabra Tasa, ya que no hay una transición, la formula con considera un cambio de estado de sano a enfermo.
+
+*Ejemplo*:
+
+120 estudiantes de primer año presentaron algun trastorno ansioso , de un total 1000 estudiantes nuevos
+
+```{r}
+a <- 120
+
+b <- 1000
+
+Prevalencia <- function(a, b){
+  a/b
+  }
+
+Prevalencia(a, b)
+
+```
+
+### Relación entre Incidencia y Prevalencia
+
+Según lo visto anteriormente, la incidencia sería adecuada usarla en estudios con diseño longitudinal y la prevalencia en estudios transversales. Además, podemos notar que están relacionadas y que además tenemos que considerar las muertes y recuperaciones en esa relación.
+
+Por ejemplo, partimos con 100 casos enfermos de una población total de 1000 (todos suceptibles). Y tenemos la información que la incidencia que la incidencia es de 0.5
+
+Nos quedan 900 casos que podrían potencialmente enfermar.
+
+Si la tasa de incidencia es = a/b y tenemos que
+
+0.5 = a/900
+
+900 \* 0.5 = a
+
+```{r}
+
+a <- 900 * 0.5
+
+a
+```
+
+Entonces van a ver 450 casos nuevos, y podríamos a volver a calcular una nueva prevalencia actualizada con esa información.
+
+```{r}
+
+prevalencia_1 <- 100/1000
+
+prevalencia_2 <- (100 + 450) / 1000 
+ 
+  # los casos del primer momento + los casos nuevos / la población total que sigue igual
+
+
+prevalencia_1
+prevalencia_2
+
+
+
+(prev_cambio <- prevalencia_2 - prevalencia_1)
+
+```
+
+En el recuadro anterior comenté que la población sigue igual ¿pero que pasa si hay mortalidad?
+
+Hay pueden haber distintos escenarios, por ejemplo que mueran casos con la enfermedad o casos sanos. Eso hara variar nuestra prevalencia ¡aunque la incidencia se haya vuelto 0!
+
+```{r}
+#conservo objeto anterior
+
+prevalencia_1
+
+#pero ahora la prevalencia dos cambiara por cambio en la población total debido a mortalidad en esta de casos sanos.
+
+(prevalencia_2 <- 100/900)
+
+#o podemos pensar en el escenario que los 100 casos que murieron fueron los enfermos 
+
+(prevalencia_3 <- 0/900)
+
+library(dplyr)
+library(ggplot2)
+
+cambios <- data.frame(rbind(prevalencia_1, prevalencia_2, prevalencia_3))
+
+colnames(cambios) <- "prevalencias"
+                         
+ggplot(cambios, aes(row.names(cambios), prevalencias))+
+  geom_point(size = 8)
+
+
+
+```
+
+Como se observa acá, la prevalencia puede variar no solo por incidencia o recuperación, sino tambien por mortalidad. En otras palabras, como estos calculos son simples divisiones, cualquier cambio tanto en numerados o denominador afectará el resultado.
+
+
+
+
+
+
+
+
+
+
+
+
 # RPG, por Rol y por R
 
 ## Comienza la aventura
