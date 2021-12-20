@@ -1,8 +1,8 @@
 theme: jekyll-theme-cayman
 title: El juego del HeRrero
-author: Gabriel González Medina
+author: Gabriel Gonz�lez Medina
 navbar-links:
-  About Me: "Psicólogo U de Chile, Magister en Epidemiología y estudiante de Doctorado en Epidemiología (P. Universidad Católica de Chile) Mail de contacto :  gagonzalez1@uc.cl"
+  About Me: "Psic�logo U de Chile, Magister en Epidemiolog�a y estudiante de Doctorado en Epidemiolog�a (P. Universidad Católica de Chile) Mail de contacto :  gagonzalez1@uc.cl"
 
 
 base_url: El-juego-del-heRrero/docs

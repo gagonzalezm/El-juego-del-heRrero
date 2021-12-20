@@ -3,14 +3,10 @@ title: "El juego del Herrero"
 author: "Gabriel González Medina"
 date: "`r Sys.Date()`"
 output:
-  prettydoc::html_pretty:
+ prettydoc::html_pretty:
     theme: architect
     highlight: github
     toc: true
-    toc_float: true
-       toc_collapsed: true
-    toc_depth: 4
-    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
