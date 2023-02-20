@@ -1,8 +1,9 @@
 theme: jekyll-theme-cayman
+description: Pagina personal. Acá busco hacer algun ejemplos didacticos sobre epidemiología, estadísticas y R
 title: El juego del HeRrero
 author: Gabriel González Medina
 navbar-links:
-  About Me: "Psicólogo U de Chile, Magister en Epidemiología y estudiante de Doctorado en Epidemiología (P. Universidad CatÃ³lica de Chile) Mail de contacto :  gagonzalez1@uc.cl"
+  About Me: Psicólogo, Magister en Epidemiología y estudiante de Doctorado en Epidemiología  Mail de contacto :  gagonzalez1@uc.cl
 
 
 base_url: El-juego-del-heRrero/docs
